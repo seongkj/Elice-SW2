@@ -1,91 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <title>WEB - Welcome</title>
-    <meta charset="utf-8" />
-    <style>
-      h1 {
-        border-bottom: 10px solid green;
-        padding: 30px;
-        margin-bottom: 0;
-      }
-      h1 a {
-        text-decoration: none;
-      }
-      ol {
-        margin-top: 0;
-      }
-      @media all and (min-width: 480px) {
-        #container {
-          display: grid;
-          grid-template-columns: 150px 1fr;
-        }
-        ol {
-          border-right: 10px solid pink;
-        }
-      }
-    </style>
-    <script>
-      function night() {
-        //document.querySelector('body').style.backgroundColor = 'black';
-        //document.querySelector('body').style.color = 'white';
-        $("body").css("background-color", "black");
-        $("body").css("color", "white");
-        let as = document.querySelectorAll("a");
-        for (let i = 0; i < as.length; i = i + 1) {
-          as[i].style.color = "white";
-        }
-      }
-      function day() {
-        document.querySelector("body").style.backgroundColor = "white";
-        document.querySelector("body").style.color = "black";
-        let as = document.querySelectorAll("a");
-        for (let i = 0; i < as.length; i = i + 1) {
-          as[i].style.color = "black";
-        }
-      }
-      function dayNight(mode) {
-        if (mode === "night") {
-          night();
-        } else {
-          day();
-        }
-      }
-    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
   </head>
   <body>
-    <input
-      type="button"
-      value="night"
-      onclick="
-                // 만약에 이 버튼의 value 값이 night라면 아래 코드가 실행되고, 
-                if(this.value === 'night'){
-                    dayNight('night');
-                    this.value = 'day';
-                } else {
-                    // 아니라면 아래 코드가 실행된다. 
-                    dayNight('day');
-                    this.value = 'night';
-                }
-            "
-    />
     <h1><a href="index.html">WEB</a></h1>
 
-    <div id="container">
-      <ol>
-        <li><a href="1.html">html</a></li>
-        <li><a href="2.html">css</a></li>
-        <li><a href="3.html">javascript</a></li>
-      </ol>
-      <div>
-        <h2>Welcome</h2>
-        Hello, WEB!!!!!
-      </div>
-    </div>
+    <nav>
+      <ol></ol>
+    </nav>
+
+    <h2>Welcome</h2>
+    <div>Hello, WEB!!!!!</div>
+    <script>
+      let topics = [
+        { id: 1, title: "html", body: "html is .." },
+        { id: 2, title: "css", body: "css is .." },
+      ];
+      let navTag = "";
+
+      // for (i = 0; i < topics.length; i++) { //내가 한거
+      //
+      //   let li = document.createElement("li");
+      //   const ol = document.querySelector("ol");
+      //   navTag = topics[i].title;
+      //   li.innerHTML = navTag;
+      //   ol.appendChild(li);
+      // }
+      function nav() {
+        for (i = 0; i < topics.length; i++) {
+          //코치님이 한거
+          navTag = navTag + `<li><a href="">${topics[i].title}</a></li>`;
+          document.querySelector("ol").innerHTML = navTag;
+        }
+      }
+      nav();
+    </script>
   </body>
 </html>
