@@ -1,42 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1><a href="index.html">WEB</a></h1>
-
-    <nav>
-      <ol></ol>
-    </nav>
-
-    <h2>Welcome</h2>
-    <div>Hello, WEB!!!!!</div>
     <script>
       let topics = [
         { id: 1, title: "html", body: "html is .." },
         { id: 2, title: "css", body: "css is .." },
       ];
-      let navTag = "";
-
-      // for (i = 0; i < topics.length; i++) { //내가 한거
-      //
-      //   let li = document.createElement("li");
-      //   const ol = document.querySelector("ol");
-      //   navTag = topics[i].title;
-      //   li.innerHTML = navTag;
-      //   ol.appendChild(li);
-      // }
-      function nav() {
-        for (i = 0; i < topics.length; i++) {
-          //코치님이 한거
-          navTag = navTag + `<li><a href="">${topics[i].title}</a></li>`;
-          document.querySelector("ol").innerHTML = navTag;
+    </script>
+  </head>
+  <body>
+    <h1>
+      <a
+        href="index.html"
+        onclick="
+      event.preventDefault();
+      document.querySelector('article').innerHTML = `<h2>Welcome</h2>`;
+      "
+        >WEB</a
+      >
+    </h1>
+    <nav>
+      <ol></ol>
+    </nav>
+    <article>
+      <h2>Welcome</h2>
+      Hello, WEB
+    </article>
+    <script>
+      /*
+            function nav(){}
+            let nav = function(){}
+            */
+      let nav = () => {
+        let navTag = "";
+        for (let i = 0; i < topics.length; i = i + 1) {
+          navTag =
+            navTag +
+            `
+            <li>
+                <a href="/read/${topics[i].id}" id="${topics[i].id}" onclick="
+                    event.preventDefault();
+                    console.log(event.target.id);
+                    for(let i=0; i<topics.length; i++){
+                        if(topics[i].id === Number(event.target.id)){
+                          document.querySelector('article').innerHTML = '<h2>'+topics[i].title+'</h2>'+topics[i].body;
+                          break;
+                        }
+                    }
+                ">
+                    ${topics[i].title}
+                </a>
+            </li>`;
         }
-      }
+        document.querySelector("nav ol").innerHTML = navTag;
+        console.log(navTag);
+      };
       nav();
     </script>
   </body>
